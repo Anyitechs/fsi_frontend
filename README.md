@@ -1,6 +1,30 @@
-# fsi_frontend
+# FSI Health (Frontend)
+
+A simple app that allows people easily register for health insurance and access better health care with little cost.
+
+[See it live here!](https://thirsty-dubinsky-c51472.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7f56e825-faad-4a90-a258-357691e9e4a6/deploy-status)](https://app.netlify.com/sites/thirsty-dubinsky-c51472/deploys)
+
+---
+
+This app was created as part of a Fullstack Engineer interview assessment, to build an MVP that allows people easily register for health insurance and access better health care with little cost.
+
+## Features
+A simple responsive mobile web app that allows users to:
+* See a list of health insurance plans [see the Reliance HMO API in the FSI sandbox](https://sandbox.fsi.ng/sandbox/relianceHMO)
+* Sign up for a health plan as an individual, with their BVN [see the NIBSS API in the FSI sandbox](https://sandbox.fsi.ng/sandbox/nibss) and then provide registration details [see the Reliance HMO API in the FSI sandbox](https://sandbox.fsi.ng/sandbox/relianceHMO)
 
 ## Project setup
+
+### Installation - Clone the repository
+
+```
+git clone https://github.com/Anyitechs/fsi_frontend.git
+```
+
+### Install dependencies
+
 ```
 npm install
 ```
