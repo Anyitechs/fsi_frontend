@@ -4,7 +4,7 @@ A simple app that allows people easily register for health insurance and access 
 
 [See it live here!](https://thirsty-dubinsky-c51472.netlify.app/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7f56e825-faad-4a90-a258-357691e9e4a6/deploy-status)](https://app.netlify.com/sites/thirsty-dubinsky-c51472/deploys)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f0874630d4924b048fc08ebf2858c5e7)](https://www.codacy.com/gh/Anyitechs/fsi_frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anyitechs/fsi_frontend&amp;utm_campaign=Badge_Grade) [![Netlify Status](https://api.netlify.com/api/v1/badges/7f56e825-faad-4a90-a258-357691e9e4a6/deploy-status)](https://app.netlify.com/sites/thirsty-dubinsky-c51472/deploys)
 
 ---
 
