@@ -1,5 +1,5 @@
 <template>
-  <div class="services">
+  <div class="services" id="services">
       <div class="services__text">
         <h3 class="services__text--title">Our services</h3>
         <span class="services__text--footnote">.</span>
@@ -53,33 +53,33 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-    name: 'Services',
+    name: "Services",
     data () {
         return {
             plans: null,
             credentials: null
-        }
+        };
     },
     created() {
-        axios.get('https://fsibackend.herokuapp.com/api/v1/plans').then(response => {
-            this.plans = response.data.plans
-        }).catch(error => {
+        axios.get("https://fsibackend.herokuapp.com/api/v1/plans").then((response) => {
+            this.plans = response.data.plans;
+        }).catch((error) => {
             console.log(error);
-        })
+        });
     },
     methods: {
         async verifyBVN() {
-            const response = await axios.post('https://fsibackend.herokuapp.com/api/v1/bvn/reset')
+            const response = await axios.post("https://fsibackend.herokuapp.com/api/v1/bvn/reset");
             if (response.data.success) {
             this.credentials = response.data.requestCredentials;
-            sessionStorage.setItem('credentials', JSON.stringify(this.credentials));
-            console.log('credentials')
+            sessionStorage.setItem("credentials", JSON.stringify(this.credentials));
+            console.log("credentials")
             console.log(this.credentials)
-            this.$router.push('/signup');
+            this.$router.push("/signup");
             } else {
-            this.$router.push('/');
+            this.$router.push("/");
             }
         }
     }

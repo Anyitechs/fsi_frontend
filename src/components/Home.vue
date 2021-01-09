@@ -9,7 +9,7 @@
           <li class="navigation__item">
             <a href="/" class="navigation__link active">Home</a>
           </li>
-          <li class="navigation__item"><a href="#" class="navigation__link">Health plans</a></li>
+          <li class="navigation__item"><a href="#services" class="navigation__link">Health plans</a></li>
         </ul>
       </nav>
     </div>
@@ -38,31 +38,31 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Services from './Services.vue'
-import Footer from './Footer.vue'
+import axios from "axios";
+import Services from "./Services.vue";
+import Footer from "./Footer.vue";
 export default {
   data () {
     return {
       credentials: null
-    }
+    };
   },
   components: { 
     Services,
     Footer
   },
-  name: 'Home',
+  name: "Home",
   methods: {
     async verifyBVN() {
-        const response = await axios.post('https://fsibackend.herokuapp.com/api/v1/bvn/reset')
+        const response = await axios.post("https://fsibackend.herokuapp.com/api/v1/bvn/reset");
         if (response.data.success) {
           this.credentials = response.data.requestCredentials;
-          sessionStorage.setItem('credentials', JSON.stringify(this.credentials));
+          sessionStorage.setItem("credentials", JSON.stringify(this.credentials));
           console.log('credentials')
           console.log(this.credentials)
-          this.$router.push('/signup');
+          this.$router.push("/signup");
         } else {
-          this.$router.push('/');
+          this.$router.push("/");
         }
     }
   }
