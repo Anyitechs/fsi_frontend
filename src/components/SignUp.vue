@@ -18,25 +18,26 @@
 </template>
 
 <script>
-import aesjs from 'aes-js'
+import axios from 'axios';
 export default {
-    name: 'SignUp',
+    name: "SignUp",
     data () {
         return {
-           bvn: ''
-        }
+           bvn: ""
+        };
     },
     methods: {
-        verifyBVN() {
-            let keys = JSON.parse(sessionStorage.getItem('credentials'));
-            let aesKey = aesjs.utils.hex.toBytes(keys['aes_key']);
-            let ivKey = aesjs.utils.hex.toBytes(keys['ivkey']);
-            let bvnBytes = aesjs.utils.utf8.toBytes(this.bvn);
-            let aesCbc = new aesjs.ModeOfOperation.cbc(aesKey, ivKey);
-            let encryptedBVN = aesCbc.encrypt(bvnBytes);
-            let encryptedBVNHex = aesjs.utils.hex.fromBytes(encryptedBVN);
-            console.log('encrypted', encryptedBVNHex);
-            return this.$router.push('/confirmation');
+        async verifyBVN() {
+            let keys = JSON.parse(sessionStorage.getItem("credentials"));
+            const bvnDetails = await axios.post("https://fsibackend.herokuapp.com/api/v1/bvn/verify", {
+                bvn: this.bvn,
+                password: keys["password"],
+                ivkey: keys["ivkey"],
+                aes_key: keys["aes_key"]
+            });
+            const { details } = bvnDetails.data;
+            localStorage.setItem("details", JSON.stringify(details));
+            this.$router.push("/confirmation");
         }
     }
 }

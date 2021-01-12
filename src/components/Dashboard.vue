@@ -3,19 +3,9 @@
       <div class="confirmation__card">
           <img src="../assets/images/fsi_logo.jpg" alt="FSI Logo" class="confirmation__image">
           <div class="confirmation__details">
-              <h3 class="confirmation__details--title">Please Confirm Details Below</h3>
-              <p class="confirmation__details--p">Sign up to insure</p>
-              <span class="confirmation__details--span">Awesome! We'll need some details from you to get started</span>
-              <div class="confirmation__input">
-                <input type="text" v-model="userDetails.FirstName" placeholder="First Name" class="confirmation__details--input">
-                <input type="text" v-model="userDetails.LastName" placeholder="Last Name" class="confirmation__details--input">
-                <input type="text" v-model="userDetails.MiddleName" placeholder="Email Address" class="confirmation__details--input">
-                <input type="text" v-model="userDetails.PhoneNumber" placeholder="Phone Number" class="confirmation__details--input">
-              </div>
-              <div class="confirmation__btn">
-                <button @click="backToReset" class="confirmation__details--btn btn-white">Back</button>
-                <button @click="toDashboard" class="confirmation__details--btn">Next</button>
-              </div>
+              <h3 class="confirmation__details--title">Hi {{ userDetails.FirstName }}, welcome to FSI Health Insurance </h3>
+              <p class="confirmation__details--p">Thank you for signing up!</p>
+              <!-- <span class="confirmation__details--span">Awesome! Welcome to u</span> -->
           </div>
       </div>
   </div>
@@ -23,7 +13,7 @@
 
 <script>
 export default {
-    name: "Confirmation",
+    name: "Dashboard",
     data () {
         return {
             userDetails: null
@@ -31,14 +21,6 @@ export default {
     },
     created() {
         this.userDetails = JSON.parse(localStorage.getItem("details"));
-    },
-    methods: {
-        backToReset() {
-            return this.$router.push("/signup");
-        },
-        toDashboard() {
-            return this.$router.push("/dashboard");
-        }
     }
 };
 </script>
