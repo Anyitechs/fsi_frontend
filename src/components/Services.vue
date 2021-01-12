@@ -47,7 +47,7 @@
           </div>
       </div>
       <div class="services__subscribe">
-          <button @click="verifyBVN" class="btn">Sign up</button>
+          <button @click="getCredentials" class="btn">Sign up</button>
       </div>
   </div>
 </template>
@@ -59,24 +59,23 @@ export default {
     data () {
         return {
             plans: null,
-            credentials: null
+            credentials: null,
+            error: null
         };
     },
     created() {
         axios.get("https://fsibackend.herokuapp.com/api/v1/plans").then((response) => {
             this.plans = response.data.plans;
         }).catch((error) => {
-            console.log(error);
+            this.error = error.message
         });
     },
     methods: {
-        async verifyBVN() {
-            const response = await axios.post("https://fsibackend.herokuapp.com/api/v1/bvn/reset");
+        async getCredentials() {
+            const response = await axios.get("https://fsibackend.herokuapp.com/api/v1/bvn/reset");
             if (response.data.success) {
-            this.credentials = response.data.requestCredentials;
+            this.credentials = response.data.resetCredentials;
             sessionStorage.setItem("credentials", JSON.stringify(this.credentials));
-            console.log("credentials")
-            console.log(this.credentials)
             this.$router.push("/signup");
             } else {
             this.$router.push("/");
